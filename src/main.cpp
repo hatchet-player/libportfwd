@@ -25,6 +25,7 @@ int main(int argc, char** argv)
         return 1;
     }
     int port = atoi(argv[1]);
+    int internal_port = atoi(argv[1]);
     Portfwd pf;
     if(!pf.init(2000))
     {
@@ -36,7 +37,7 @@ int main(int argc, char** argv)
     printf("Max upstream: %d bps, max downstream: %d bps\n",
            pf.max_upstream_bps(), pf.max_downstream_bps() );
            
-    printf("%s\n", ((pf.add( port, NULL ))?"Added":"Failed to add") );
+    printf("%s\n", ((pf.add( port, internal_port ))?"Added":"Failed to add") );
 
     printf("Any key to exit...\n");
     char foo;

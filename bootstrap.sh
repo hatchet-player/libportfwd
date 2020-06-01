@@ -6,5 +6,5 @@ rm -rf build*
 meson setup build-gcc
 
 cd build-gcc
-meson --reconfigure
+meson --reconfigure -Dprefix=/usr
 ninja -j4

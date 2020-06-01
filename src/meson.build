@@ -41,6 +41,16 @@ libportfwd_lib = library(
     link_args : libportfwd_link_args,
     dependencies : libportfwd_dep_list)
 
+libportfwd_bin = executable(
+    'portfwd-demo',
+    install : true,
+    install_mode : 'rwxr-xr-x',
+    install_dir : bindir,
+    include_directories : libportfwd_inc,
+    sources : libportfwd_src,
+    link_with : libportfwd_lib,
+    dependencies : libportfwd_dep_list)
+
 
 libportfwd_dep = declare_dependency(
     link_with : libportfwd_lib,
