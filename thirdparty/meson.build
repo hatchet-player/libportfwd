@@ -1,7 +1,9 @@
+# tomahawk thirdparty build file
+#============================================================================
 
 thirdparty_dirs = [
     'libnatpmp',
-    'miniupnpc-20090605']
+    'miniupnpc-1.6']
 
 
 foreach dir : thirdparty_dirs

@@ -1,4 +1,4 @@
-# thirdparty.libportfwd build file
+# libportfwd build file
 #============================================================================
 
 
@@ -14,6 +14,7 @@ libportfwd_src = files(
     join_paths(libportfwd_src_dir, 'portfwd.cpp'))
 
 libportfwd_dep_list = [
+    miniupnpc_dep,
     qt5_dep]
 
 # Link args

@@ -12,7 +12,7 @@
 #-------------------------------------------------
 project(
     'libportfwd',
-    ['cpp'],
+    ['c', 'cpp'],
     default_options : [
         'cpp_std=c++11',
         'warning_level=3',
@@ -26,6 +26,7 @@ project(
 
 # init compiler 
 #-------------------------------------------------
+c = meson.get_compiler('c')
 cpp = meson.get_compiler('cpp')
 
 add_project_arguments(get_option('cxxflags'), language : 'cpp')
@@ -123,6 +124,47 @@ includedir = join_paths(prefix, get_option('includedir'))
 # look for required programs
 #--------------------------------------------------
 git = find_program('git', required : true)
+
+
+# Look for qt5, a required dependency.
+#-------------------------------------------------
+qt5_link_args = get_option('qt5_link_args')
+qt5_mod_list = [
+    'Core',
+    'Concurrent',
+    'Gui',
+    'Network',
+    'Sql',
+    'Svg',
+    'UiTools',
+    'WebKitWidgets',
+    'Widgets',
+    'Xml']
+
+check_qt5_x11 = dependency(
+    'qt5', modules : 'X11Extras', required : false).found()
+
+if (check_qt5_x11)
+    qt5_mod_list += 'X11Extras'
+    qt5_link_args += get_option('qt5_x11_link_args')
+    config_h.set(   
+        'HAVE_X11', 1,
+        description : 'Whether to build with QT5 X11 support')
+endif
+
+qt5_dep = declare_dependency(
+    link_args : qt5_link_args,
+    dependencies : [ dependency(
+        'qt5',
+        modules: qt5_mod_list)])
+
+if (qt5_dep.found())
+    config_h.set(
+        'HAVE_QT5', 1,
+        description : 
+            'Provides support for installation of resolvers from the' +
+            'Tomahawk website')
+endif
 
 
 # Optional dependancies

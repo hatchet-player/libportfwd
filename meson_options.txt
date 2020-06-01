@@ -28,5 +28,31 @@ option(
 #============================================================================
 
 
+option(
+    'qt5_link_args', 
+    type : 'array', 
+    value : [
+        '-I/usr/lib/qt',
+        '-lQt5Core',
+        '-lQt5Concurrent',
+        '-lQt5Gui',
+        '-lQt5Network',
+        '-lQt5Sql',
+        '-lQt5Svg',
+        '-lQt5UiTools',
+        '-lQt5WebKitWidgets',
+        '-lQt5Widgets',
+        '-lQt5Xml',
+        '-lQt5X11Extras'],
+    description : 'link args for Qt5')
+
+
+option(
+    'qt5_x11_link_args', 
+    type : 'string', 
+    value : '-lQt5X11Extras',
+    description : 'link args for Qt5')
+
+
 # optional dependancies
 #============================================================================
