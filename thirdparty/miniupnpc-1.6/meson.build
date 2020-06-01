@@ -13,7 +13,7 @@ miniupnpc_dep_list = [
 #============================================================================
 
 
-miniupnpc_src_dir = join_paths(meson.source_root(), 'thirdparty/miniupnpc-1.6')
+miniupnpc_src_dir = meson.current_source_dir()
 miniupnpc_inc = include_directories('.')
 
 

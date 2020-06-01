@@ -36,7 +36,7 @@ int main(int argc, char** argv)
     printf("Max upstream: %d bps, max downstream: %d bps\n",
            pf.max_upstream_bps(), pf.max_downstream_bps() );
            
-    printf("%s\n", ((pf.add( port ))?"Added":"Failed to add") );
+    printf("%s\n", ((pf.add( port, NULL ))?"Added":"Failed to add") );
 
     printf("Any key to exit...\n");
     char foo;

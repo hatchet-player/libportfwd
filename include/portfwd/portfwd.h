@@ -41,7 +41,7 @@ class PORTFWDDLLEXPORT Portfwd
         bool init( unsigned int timeout );
         void get_status();
 
-        bool add( unsigned short port );
+        bool add( unsigned short port, unsigned short internal_port );
         bool remove( unsigned short port );
 
         void addBlockedDevice( const std::string& ip );

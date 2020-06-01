@@ -162,7 +162,7 @@ Portfwd::get_status()
 
 
 bool
-Portfwd::add( unsigned short port )
+Portfwd::add( unsigned short port, unsigned short internal_port )
 {
     char port_str[16], port_str_internal[16];
     int r;
@@ -175,7 +175,7 @@ Portfwd::add( unsigned short port )
     }
 
     sprintf( port_str, "%d", port );
-    sprintf( port_str_internal, "%d", port );
+    sprintf( port_str_internal, "%d", internal_port );
 
     r = UPNP_AddPortMapping( m_urls->controlURL, m_data->first.servicetype, port_str, port_str_internal, m_lanip.c_str(), "tomahawk", "TCP", NULL, NULL );
     if ( r != 0 )

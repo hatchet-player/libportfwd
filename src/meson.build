@@ -6,7 +6,7 @@
 #============================================================================
 
 
-libportfwd_src_dir = join_paths(meson.source_root(), 'src')
+libportfwd_src_dir = meson.current_source_dir()
 libportfwd_inc += include_directories('.')
 
 libportfwd_src = files(
