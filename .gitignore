@@ -1,6 +1,6 @@
 src/accounts/tomahawk
 build/*
-build-*/*
+build*/*
 .directory
 *.a
 *.o

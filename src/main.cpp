@@ -19,9 +19,9 @@
 
 int main(int argc, char** argv)
 {
-    if(argc!=2)
+    if(argc!=3)
     {
-        printf("Usage: %s <port>\n", argv[0]);
+        printf("Usage: %s <port> <internal port>\n", argv[0]);
         return 1;
     }
     int port = atoi(argv[1]);

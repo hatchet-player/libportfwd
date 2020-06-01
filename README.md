@@ -25,6 +25,6 @@ See the demo in main.cpp, but here's the jist:
 
  Portfwd pf;
  pf.init(2000);   // 2000 = ms to wait for response from router
- pf.add(1234);    // port to fwd to you
+ pf.add(1234 1234);    // port to fwd to you
  pf.remove(1234); // remove port fwding on exit
 
