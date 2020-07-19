@@ -19,7 +19,9 @@ project(
         'optimization=3',
         'debug=true'
     ],
-    version : run_command('cat', './.version').stdout().strip(),
+    version : run_command(
+        'python', '-c',
+        '''with open('./VERSION','r') as f: print(f.read());''' ).stdout().strip(),
     license : 'GPLv3'
 )
 
