@@ -1,4 +1,4 @@
-# libportfwd project build file
+# miniupnpc project build file
 #============================================================================
 
 
@@ -9,14 +9,14 @@
 
 
 # init project
-#-------------------------------------------------
+#---------------------------------------------------
 project(
-    'libportfwd',
-    ['c', 'cpp'],
+    'miniupnpc',
+    ['c'],
     default_options : [
         'cpp_std=c++11',
         'warning_level=3',
-        'optimization=3',
+        # 'optimization=3',
         'debug=true'
     ],
     version : run_command(
@@ -25,23 +25,13 @@ project(
     license : 'GPLv3'
 )
 
-
-# init compiler 
-#-------------------------------------------------
-c = meson.get_compiler('c')
-cpp = meson.get_compiler('cpp')
-
-add_project_arguments(get_option('cxxflags'), language : 'cpp')
-add_project_link_arguments(get_option('ldflags'), language: 'cpp')
-
-qt5 = import('qt5')
-cmake = import('cmake')
-pkg = import('pkgconfig')
 sys_name = host_machine.system().to_lower()
 
 
+
+
 # init configuration
-#-------------------------------------------------
+#---------------------------------------------------
 config_h = configuration_data()
 
 config_h.set(
@@ -74,11 +64,12 @@ config_h.set_quoted(
     'PACKAGE_URL', package_url,
     description : 'Define to the home page for this package.')
 
-package_bug_url = 'https://github.com/p01arst0rm/libportfwd/issues'
+package_bug_url = 'https://github.com/hatchet-player/libportfwd/issues'
 config_h.set_quoted(
     'PACKAGE_BUGREPORT', package_bug_url,
     description : 'Define to the address where bug reports for this' +
     'package should be sent.')
+
 
 
 # env
@@ -86,7 +77,7 @@ config_h.set_quoted(
 
 
 # set install directories
-#-------------------------------------------------
+#---------------------------------------------------
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 bindir = join_paths(prefix, get_option('bindir'))
@@ -95,22 +86,20 @@ sysconfdir = join_paths(prefix, get_option('sysconfdir'))
 libexecdir = join_paths(prefix, get_option('libexecdir'))
 mandir = join_paths(prefix, get_option('mandir'))
 includedir = join_paths(prefix, get_option('includedir'))
-libportfwd_inc = [include_directories('.', 'include', 'src')]
-
-# OS Specific checks 
-#============================================================================
+hatchet_inc = [include_directories('.', 'src')]
 
 
 # build
 #============================================================================
 
 
-# build libportfwd
-#-------------------------------------------------
+# build miniupnpc
+#---------------------------------------------------
+
+
 project_dirs = [
-    'dependencies',
-    'extra',
-    'src']
+    'src',
+]
 
 
 foreach dir : project_dirs
