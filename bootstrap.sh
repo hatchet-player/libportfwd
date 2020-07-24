@@ -3,8 +3,8 @@
 git submodule update --init --recursive
 
 rm -rf build*
-meson setup build-gcc
+meson setup build
 
-cd build-gcc
+cd build
 meson --reconfigure -Dprefix=/usr
 ninja -j4
