@@ -33,11 +33,9 @@ endif
 
 # Look for qt5, a required dependency.
 #---------------------------------------------------
-qt5_dep = declare_dependency(
-    link_args : qt5_link_args,
-    dependencies : [ dependency(
-        'qt5',
-        modules: qt5_mod_list)])
+qt5_dep = dependency(
+    'qt5',
+    modules: qt5_mod_list)
 
 
 # qdbusxml2cpp converts qt dbus files to cpp sources

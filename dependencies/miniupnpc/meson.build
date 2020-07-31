@@ -2,8 +2,7 @@
 #============================================================================
 
 
-# check if
-# KDSingleApplicationGuard is already installed
+# check if miniupnpc is already installed
 #---------------------------------------------------
 miniupnpc_dep = dependency('miniupnpc', required : false)
 
@@ -18,9 +17,9 @@ if not miniupnpc_dep.found()
 endif
 
 
-# Set HAVE_KDSINGLEAPPLICATIONGUARD in config.h
+# Set HAVE_MINIUPNPC in config.h
 #---------------------------------------------------
 config_h.set(
-    'HAVE_KDSINGLEAPPLICATIONGUARD',
+    'HAVE_MINIUPNPC',
     miniupnpc_dep.found(),
     description : '')
